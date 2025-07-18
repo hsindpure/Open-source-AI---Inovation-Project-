@@ -1,0 +1,89 @@
+https://eazybi.com/blog/data-visualization-and-chart-types
+Data Visualization – How to Pick the Right Chart Type?
+What is data visualization? Learn about its best practices, types of data visualization charts, and how to pick the right chart to recognize the value in your data.
+ 
+BEGIN
+ 
+  // Step 1: User uploads data
+
+  PROMPT user to upload data file (xlsx or csv)
+
+  dataFile ← RECEIVE uploaded file
+ 
+  // Step 2: Load and preprocess data
+
+  data ← LOAD dataFile
+
+  cleanedData ← PREPROCESS data (handle missing values, data types, etc.)
+ 
+  // Step 3: Classify data using LenAI
+
+  classificationResult ← LenAI.CLASSIFY(cleanedData)
+ 
+  // Step 4: Determine data characteristics
+
+  dataType ← classificationResult.type  // e.g., numerical, categorical, time-series, etc.
+
+  dataSize ← COUNT rows in cleanedData
+
+  numberOfFeatures ← COUNT columns in cleanedData
+
+  featureTypes ← classificationResult.featureTypes  // e.g., numerical, categorical, date, etc.
+ 
+  // Step 5: Decide visualization based on classification and data characteristics
+
+  IF dataType IS "numerical" AND numberOfFeatures IS 1 THEN
+
+      visualization ← "Histogram"
+
+  ELSE IF dataType IS "numerical" AND numberOfFeatures IS 2 THEN
+
+      visualization ← "Scatter Plot"
+
+  ELSE IF dataType IS "categorical" AND numberOfFeatures IS 1 THEN
+
+      visualization ← "Bar Chart"
+
+  ELSE IF dataType IS "categorical" AND numberOfFeatures IS 2 THEN
+
+      visualization ← "Grouped Bar Chart" OR "Stacked Bar Chart"
+
+  ELSE IF dataType IS "time-series" THEN
+
+      visualization ← "Line Chart"
+
+  ELSE IF dataType IS "mixed" OR multiple feature types THEN
+
+      visualization ← "Combination Chart" (e.g., scatter + bar)
+
+  ELSE
+
+      visualization ← "Table" // fallback for complex or unclear data
+ 
+  // Step 6: Present recommended visualization to user
+
+  DISPLAY "Based on your data, the recommended visualization is: " + visualization
+ 
+  // Optional: Generate the visualization
+
+  visualizationObject ← GENERATE visualization of type visualization with cleanedData
+ 
+  // Step 7: Allow user to customize or confirm visualization
+
+  PROMPT user for confirmation or customization
+
+  IF user wants to customize THEN
+
+      customizationOptions ← GET user preferences
+
+      visualizationObject ← UPDATE visualization with customizationOptions
+
+  ENDIF
+ 
+  // Step 8: Render and display visualization
+
+  DISPLAY visualizationObject
+ 
+END
+
+ 
