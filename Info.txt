@@ -1,89 +1,103 @@
-https://eazybi.com/blog/data-visualization-and-chart-types
-Data Visualization – How to Pick the Right Chart Type?
-What is data visualization? Learn about its best practices, types of data visualization charts, and how to pick the right chart to recognize the value in your data.
- 
-BEGIN
- 
-  // Step 1: User uploads data
+🧩 Project Summary:
+Create an AI-powered, open-source web application where:
 
-  PROMPT user to upload data file (xlsx or csv)
+Users can upload an Excel file containing their data.
 
-  dataFile ← RECEIVE uploaded file
- 
-  // Step 2: Load and preprocess data
+An AI model automatically generates a fully functional HTML + CSS dashboard based on the uploaded data.
 
-  data ← LOAD dataFile
+The dashboard includes an integrated AI chatbot that users can interact with regarding the uploaded data.
 
-  cleanedData ← PREPROCESS data (handle missing values, data types, etc.)
- 
-  // Step 3: Classify data using LenAI
+📋 Requirements (Step-by-Step Breakdown):
+1. Landing Page
+The landing page should be visually engaging with:
 
-  classificationResult ← LenAI.CLASSIFY(cleanedData)
- 
-  // Step 4: Determine data characteristics
+High-quality animated analytical charts and graphs.
 
-  dataType ← classificationResult.type  // e.g., numerical, categorical, time-series, etc.
+Smooth loading animations.
 
-  dataSize ← COUNT rows in cleanedData
+A prominent "Get Started" button.
 
-  numberOfFeatures ← COUNT columns in cleanedData
+When clicked, it should navigate the user to a second page for data upload.
 
-  featureTypes ← classificationResult.featureTypes  // e.g., numerical, categorical, date, etc.
- 
-  // Step 5: Decide visualization based on classification and data characteristics
+2. File Upload & Data Processing
+On the second page:
 
-  IF dataType IS "numerical" AND numberOfFeatures IS 1 THEN
+Users should be able to upload Excel files (.xlsx).
 
-      visualization ← "Histogram"
+Once uploaded:
 
-  ELSE IF dataType IS "numerical" AND numberOfFeatures IS 2 THEN
+Convert the Excel data into a JSON object.
 
-      visualization ← "Scatter Plot"
+Use JSON.stringify() to convert the JSON data into a string.
 
-  ELSE IF dataType IS "categorical" AND numberOfFeatures IS 1 THEN
+Send this string to the OpenAI model with a pre-defined prompt.
 
-      visualization ← "Bar Chart"
+3. AI Model Responsibilities
+The model receives the data and:
 
-  ELSE IF dataType IS "categorical" AND numberOfFeatures IS 2 THEN
+Identifies the type of data (e.g., numerical, categorical, time-series, mixed).
 
-      visualization ← "Grouped Bar Chart" OR "Stacked Bar Chart"
+Evaluates data characteristics:
 
-  ELSE IF dataType IS "time-series" THEN
+pseudo
+Copy
+Edit
+dataType ← classificationResult.type
+dataSize ← COUNT rows in cleanedData
+numberOfFeatures ← COUNT columns in cleanedData
+featureTypes ← classificationResult.featureTypes
+Based on this analysis, it determines the appropriate visualizations:
 
-      visualization ← "Line Chart"
+pseudo
+Copy
+Edit
+IF numerical AND 1 feature → Histogram
+IF numerical AND 2 features → Scatter Plot
+IF categorical AND 1 feature → Bar Chart
+IF categorical AND 2 features → Grouped/Stacked Bar Chart
+IF time-series → Line Chart
+IF mixed types → Combination Chart (e.g., scatter + bar)
+ELSE → Table (fallback)
+Displays a recommendation to the user:
 
-  ELSE IF dataType IS "mixed" OR multiple feature types THEN
+“Based on your data, the recommended visualization is: [Chart Type]”
 
-      visualization ← "Combination Chart" (e.g., scatter + bar)
+Optionally generates the visualizations automatically.
 
-  ELSE
+4. Auto-Generated Dashboard Layout
+The dashboard should include:
 
-      visualization ← "Table" // fallback for complex or unclear data
- 
-  // Step 6: Present recommended visualization to user
+Header bar
 
-  DISPLAY "Based on your data, the recommended visualization is: " + visualization
- 
-  // Optional: Generate the visualization
+Display the uploaded file name.
 
-  visualizationObject ← GENERATE visualization of type visualization with cleanedData
- 
-  // Step 7: Allow user to customize or confirm visualization
+Filter Section
 
-  PROMPT user for confirmation or customization
+2–3 dropdown select filters based on data.
 
-  IF user wants to customize THEN
+“Clear All Selections” button.
 
-      customizationOptions ← GET user preferences
+KPIs Section
 
-      visualizationObject ← UPDATE visualization with customizationOptions
+If applicable, show 4–5 KPIs (Key Performance Indicators).
 
-  ENDIF
- 
-  // Step 8: Render and display visualization
+If no KPI-suitable data is available, skip this section.
 
-  DISPLAY visualizationObject
- 
-END
+Charts Section
 
- 
+Display 4 dynamic, interactive charts.
+
+Layout: maximum of 2 charts per row.
+
+Charts should be:
+
+Drill-down capable.
+
+Interconnected: selecting a point on one chart filters others accordingly.
+
+Animation & Transitions
+
+Smooth, modern animations for loading, transitions, and chart interactions.
+
+
+I need to create this whole project in html, css, bootrrap, font- awesoe, Plane Javascript and Jquery, to create the charts use Echart library and create at least two 3D charts in dashboard
