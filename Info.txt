@@ -101,3 +101,5 @@ Smooth, modern animations for loading, transitions, and chart interactions.
 
 
 I need to create this whole project in html, css, bootrrap, font- awesoe, Plane Javascript and Jquery, to create the charts use Echart library and create at least two 3D charts in dashboard
+
+dont use typescript or react or angular framework, Just use vallina js, jquery, Echart, Bootstrap
